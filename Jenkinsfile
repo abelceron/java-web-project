@@ -6,6 +6,11 @@ pipeline{
                 sh "mvn clean package"
             }
         }
+        stage('Approve QA'){
+            steps{
+                input "Deseas Aprobar?"
+            }
+        }
         stage('Deploy'){
             steps{
                 deploy adapters: [tomcat7(credentialsId: '9f6ed796-4de9-4f8d-a164-4f905b3f0d06',
